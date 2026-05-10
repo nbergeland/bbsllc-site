@@ -37,7 +37,7 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--ink);color:var(--paper)}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth; overflow-x:clip}
   body{
     font-family:var(--sans);
     font-feature-settings:"ss01","cv11","ss03";
@@ -45,7 +45,16 @@
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
-    overflow-x:hidden;
+    overflow-x:clip;
+    -webkit-overflow-scrolling:touch;
+  }
+  /* mobile: smooth scroll feels sluggish, momentum scrolling handles it */
+  @media (max-width:768px){
+    html{scroll-behavior:auto}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none !important}
+    html{scroll-behavior:auto}
   }
   /* faint coordinate grid bg */
   body::before{
@@ -222,12 +231,22 @@
     background:var(--ink-2);
     overflow:hidden;
     position:relative; z-index:2;
+    /* don't intercept touch/pointer events — lets vertical scroll pass through */
+    pointer-events:none;
+    /* contain layout/paint to prevent the animation invalidating the rest of the page */
+    contain:content;
   }
   .ticker-track{
     display:flex; gap:0;
     padding:18px 0;
     animation:scroll 60s linear infinite;
     white-space:nowrap;
+    /* GPU-promote so the animation runs on the compositor thread, not the main thread */
+    will-change:transform;
+    transform:translate3d(0,0,0);
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    perspective:1000px;
   }
   .ticker-track span{
     font-family:var(--mono);
@@ -241,8 +260,8 @@
   }
   .ticker-track .acc{color:var(--gilt)}
   @keyframes scroll{
-    0%{transform:translateX(0)}
-    100%{transform:translateX(-50%)}
+    0%{transform:translate3d(0,0,0)}
+    100%{transform:translate3d(-50%,0,0)}
   }
   /* ---------- SECTION FRAME ---------- */
   section.block{
