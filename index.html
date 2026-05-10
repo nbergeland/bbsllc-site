@@ -119,6 +119,9 @@
   @media (max-width:540px){
     .brand-name{display:none}
   }
+  @media (max-width:480px){
+    .nav-cta{padding:8px 12px; font-size:11px}
+  }
   .nav-links{display:flex; gap:28px; align-items:center}
   .nav-links a{
     font-family:var(--mono);
@@ -156,6 +159,7 @@
     text-transform:uppercase;
     color:var(--mute);
     display:flex; gap:14px; align-items:center;
+    flex-wrap:wrap;
     margin-bottom:36px;
   }
   .eyebrow .dot{
@@ -188,7 +192,7 @@
     margin:0 0 48px;
   }
   .hero-meta{
-    display:flex; flex-wrap:wrap; gap:48px 64px;
+    display:flex; flex-wrap:wrap; gap:32px 48px;
     padding-top:32px;
     border-top:1px solid var(--line-soft);
     font-family:var(--mono);
@@ -196,7 +200,11 @@
     letter-spacing:.06em;
     color:var(--mute);
   }
-  .hero-meta div{max-width:280px}
+  .hero-meta div{max-width:320px}
+  @media (max-width:560px){
+    .hero-meta{gap:24px 0; flex-direction:column}
+    .hero-meta div{max-width:none}
+  }
   .hero-meta b{
     display:block;
     color:var(--paper);
@@ -356,10 +364,14 @@
   .work-row:hover{background:linear-gradient(90deg, transparent, rgba(212,165,71,0.04), transparent)}
   @media (max-width:880px){
     .work-row{
-      grid-template-columns: 60px 1fr;
-      gap:14px 18px;
+      grid-template-columns: 1fr;
+      gap:12px;
+      padding: 28px 0;
     }
-    .work-row .col-meta{grid-column:1/-1; margin-top:8px}
+    .work-row .col-num{display:none}
+    .work-row .col-client{padding-top:0}
+    .work-row .col-name{margin-top:4px}
+    .work-row .col-meta{margin-top:8px}
     .work-row .col-arrow{display:none}
   }
   .col-num{
@@ -404,6 +416,9 @@
     line-height:1.55;
     color:var(--paper-dim);
     max-width:46ch;
+  }
+  @media (max-width:880px){
+    .col-name p{max-width:none}
   }
   .col-meta{
     font-family:var(--mono);
@@ -513,6 +528,9 @@
     margin-bottom:6px;
   }
   .cred span{color:var(--paper)}
+  @media (max-width:420px){
+    .creds{grid-template-columns:1fr}
+  }
   /* ---------- CTA ---------- */
   .cta{
     padding: clamp(80px, 14vh, 160px) 0;
@@ -559,6 +577,10 @@
   }
   .btn-ghost:hover{border-color:var(--paper); color:var(--paper); background:transparent}
   .btn .arr{font-family:var(--serif); font-style:italic; font-size:16px; line-height:1}
+  @media (max-width:480px){
+    .btn{padding:14px 20px; font-size:11px; letter-spacing:.1em}
+    .cta-row{flex-direction:column; align-items:flex-start}
+  }
   /* ---------- FOOTER ---------- */
   footer{
     padding: 56px 0 40px;
@@ -613,11 +635,14 @@
   .foot-bot{
     border-top:1px solid var(--line);
     padding-top:24px;
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
     font-family:var(--mono);
     font-size:11px;
     letter-spacing:.08em;
     color:var(--mute);
+  }
+  @media (max-width:480px){
+    .foot-bot{flex-direction:column; font-size:10px}
   }
   .foot-bot a:hover{color:var(--gilt)}
   /* ---------- ANIM ---------- */
@@ -888,15 +913,16 @@
       <article class="work-row">
         <div class="col-num">004</div>
         <div class="col-client">
-          Logistics
-          <small>Carrier Network</small>
+          Target
+          <small>2023 · Logistics</small>
         </div>
         <div class="col-name">
           Network overlap <em>detector</em>
           <p>
-            A Flask + Plotly Dash application for identifying overlapping carrier GPS
-            footprints across a national logistics network &mdash; surfacing redundancy,
-            lane gaps, and route consolidation opportunities.
+            Flask + Plotly Dash application for Target Corp., identifying overlapping
+            carrier GPS footprints across the national network. <strong>Doubled the available
+            carrier pool</strong> and contributed to <strong>40% YOY savings on the 2023
+            annual RFP</strong>.
           </p>
         </div>
         <div class="col-meta">
