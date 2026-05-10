@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>BBS LLC — Bergeland Business Solutions · Data Consultancy</title>
+<title>BBS LLC — Bergeland Business Services · Data Consultancy</title>
 <meta name="description" content="A boutique data consultancy specializing in location intelligence, gravity models, geospatial analytics, and forensic data. Maple Grove, MN." />
-<meta property="og:title" content="BBS LLC — Bergeland Business Solutions" />
+<meta property="og:title" content="BBS LLC — Bergeland Business Services" />
 <meta property="og:description" content="A boutique data consultancy. Location intelligence, gravity models, forensic data, and proprietary tooling." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.bbsllc.ai/" />
 <link rel="canonical" href="https://www.bbsllc.ai/" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 244 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='none' stroke='%23E6BE6E' stroke-width='8'/%3E%3Ccircle cx='122' cy='50' r='46' fill='none' stroke='%23E6BE6E' stroke-width='8'/%3E%3Ccircle cx='194' cy='50' r='46' fill='none' stroke='%23E6BE6E' stroke-width='8'/%3E%3Ctext x='50' y='50' fill='%23E6BE6E' font-family='system-ui,sans-serif' font-size='58' font-weight='700' text-anchor='middle' dominant-baseline='central'%3EB%3C/text%3E%3Ctext x='122' y='50' fill='%23E6BE6E' font-family='system-ui,sans-serif' font-size='58' font-weight='700' text-anchor='middle' dominant-baseline='central'%3EB%3C/text%3E%3Ctext x='194' y='50' fill='%23E6BE6E' font-family='system-ui,sans-serif' font-size='58' font-weight='700' text-anchor='middle' dominant-baseline='central'%3ES%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
@@ -96,22 +97,28 @@
   .brand{
     display:flex; align-items:center; gap:14px;
     font-family:var(--mono);
-    font-size:13px;
-    letter-spacing:.04em;
-  }
-  .brand-mark{
-    width:28px; height:28px;
-    border:1px solid var(--gilt);
+    font-size:12px;
+    letter-spacing:.06em;
     color:var(--gilt);
-    display:grid; place-items:center;
-    font-family:var(--serif);
-    font-style:italic;
-    font-weight:500;
-    font-size:16px;
-    line-height:1;
   }
-  .brand-name{color:var(--paper)}
-  .brand-name b{font-weight:600}
+  .brand-logo{
+    height:30px;
+    width:auto;
+    color:var(--gilt);
+    flex-shrink:0;
+    display:block;
+  }
+  .brand-logo .ring{stroke:currentColor; fill:none; stroke-width:6}
+  .brand-logo .glyph{fill:currentColor; stroke:none}
+  .brand-name{
+    color:var(--paper-dim);
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:11px;
+  }
+  @media (max-width:540px){
+    .brand-name{display:none}
+  }
   .nav-links{display:flex; gap:28px; align-items:center}
   .nav-links a{
     font-family:var(--mono);
@@ -586,14 +593,17 @@
   }
   .foot-grid a:hover{color:var(--gilt)}
   .foot-brand{
-    font-family:var(--serif);
-    font-variation-settings:"opsz" 60, "SOFT" 30, "wght" 400;
-    font-size:32px;
-    line-height:1;
-    color:var(--paper);
-    margin-bottom:14px;
+    margin-bottom:18px;
+    color:var(--gilt);
   }
-  .foot-brand em{font-style:italic; color:var(--gilt)}
+  .foot-brand svg{
+    height:54px;
+    width:auto;
+    display:block;
+    color:inherit;
+  }
+  .foot-brand .ring{stroke:currentColor; fill:none; stroke-width:6}
+  .foot-brand .glyph{fill:currentColor; stroke:none}
   .foot-tag{
     font-size:13.5px;
     color:var(--mute);
@@ -625,9 +635,16 @@
 <!-- ========== NAV ========== -->
 <header class="nav">
   <div class="wrap nav-row">
-    <a href="#top" class="brand" aria-label="BBS LLC home">
-      <span class="brand-mark">B</span>
-      <span class="brand-name"><b>BBS</b>&nbsp;LLC&nbsp;·&nbsp;Bergeland Business Solutions</span>
+    <a href="#top" class="brand" aria-label="BBS LLC — Bergeland Business Services">
+      <svg class="brand-logo" viewBox="0 0 244 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <circle class="ring" cx="50"  cy="50" r="46"/>
+        <circle class="ring" cx="122" cy="50" r="46"/>
+        <circle class="ring" cx="194" cy="50" r="46"/>
+        <text class="glyph" x="50"  y="50" font-family="Instrument Sans, ui-sans-serif, system-ui, sans-serif" font-size="58" font-weight="700" text-anchor="middle" dominant-baseline="central">B</text>
+        <text class="glyph" x="122" y="50" font-family="Instrument Sans, ui-sans-serif, system-ui, sans-serif" font-size="58" font-weight="700" text-anchor="middle" dominant-baseline="central">B</text>
+        <text class="glyph" x="194" y="50" font-family="Instrument Sans, ui-sans-serif, system-ui, sans-serif" font-size="58" font-weight="700" text-anchor="middle" dominant-baseline="central">S</text>
+      </svg>
+      <span class="brand-name">Bergeland Business Services</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#capabilities">Capabilities</a>
@@ -975,9 +992,10 @@
       <div class="principal-bio">
         <p>
           Eight-plus years across data science, analytics, and consulting. Prior to BBS,
-          Nick worked as a Logistics Analyst at Target, a Sales Executive at C.H. Robinson,
-          and a Business Architect at GeriCare Solutions &mdash; a path that mixes data
-          rigor with the practical reality of how operations actually run.
+          Nick worked as a Logistics Analyst at Target and a Sales Executive at C.H. Robinson;
+          today, alongside BBS, he is a Sr. Data Engineer at Brick Inc. with conversion to
+          partner underway &mdash; a path that mixes data rigor with the practical reality
+          of how operations actually run.
         </p>
         <p>
           BBS engagements lean toward the geospatial and the analytically demanding:
@@ -1017,9 +1035,18 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand">BBS <em>LLC</em></div>
+        <div class="foot-brand" aria-label="BBS LLC">
+          <svg viewBox="0 0 244 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <circle class="ring" cx="50"  cy="50" r="46"/>
+            <circle class="ring" cx="122" cy="50" r="46"/>
+            <circle class="ring" cx="194" cy="50" r="46"/>
+            <text class="glyph" x="50"  y="50" font-family="Instrument Sans, ui-sans-serif, system-ui, sans-serif" font-size="58" font-weight="700" text-anchor="middle" dominant-baseline="central">B</text>
+            <text class="glyph" x="122" y="50" font-family="Instrument Sans, ui-sans-serif, system-ui, sans-serif" font-size="58" font-weight="700" text-anchor="middle" dominant-baseline="central">B</text>
+            <text class="glyph" x="194" y="50" font-family="Instrument Sans, ui-sans-serif, system-ui, sans-serif" font-size="58" font-weight="700" text-anchor="middle" dominant-baseline="central">S</text>
+          </svg>
+        </div>
         <p class="foot-tag">
-          Bergeland Business Solutions. A boutique data consultancy specializing in
+          Bergeland Business Services. A boutique data consultancy specializing in
           location intelligence, geospatial modeling, and forensic data work.
         </p>
       </div>
@@ -1043,7 +1070,7 @@
       </div>
     </div>
     <div class="foot-bot">
-      <span>© 2026 BBS LLC · Bergeland Business Solutions</span>
+      <span>© 2026 BBS LLC · Bergeland Business Services</span>
       <span>Designed &amp; built in-house · Maple Grove, MN</span>
     </div>
   </div>
