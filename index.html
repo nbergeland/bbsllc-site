@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BBS LLC — Bergeland Business Solutions · Data Consultancy</title>
+<meta name="description" content="A boutique data consultancy specializing in location intelligence, gravity models, geospatial analytics, and forensic data. Maple Grove, MN." />
+<meta property="og:title" content="BBS LLC — Bergeland Business Solutions" />
+<meta property="og:description" content="A boutique data consultancy. Location intelligence, gravity models, forensic data, and proprietary tooling." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.bbsllc.ai/" />
+<link rel="canonical" href="https://www.bbsllc.ai/" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:        #16120E;
+    --ink-2:      #1E1913;
+    --ink-3:      #251F17;
+    --line:       #3A3225;
+    --line-soft:  #2B2519;
+    --paper:      #F1E9D4;
+    --paper-dim:  #D2C8AE;
+    --mute:       #968B74;
+    --mute-2:     #6A6353;
+    --gilt:       #E6BE6E;
+    --gilt-soft:  #C99E4F;
+    --clay:       #C97A56;
+    --serif: "Fraunces", ui-serif, Georgia, serif;
+    --sans:  "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --max: 1320px;
+    --gut: clamp(20px, 4vw, 56px);
+    --r: 2px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--ink);color:var(--paper)}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    font-feature-settings:"ss01","cv11","ss03";
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  /* faint coordinate grid bg */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(241,233,212,0.028) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(241,233,212,0.028) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events:none;
+    z-index:0;
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(900px 550px at 82% -8%,  rgba(230,190,110,0.12), transparent 62%),
+      radial-gradient(1000px 700px at -8% 28%, rgba(230,190,110,0.06), transparent 62%),
+      radial-gradient(800px 600px at 60% 108%, rgba(201,122,86,0.09),  transparent 62%);
+    pointer-events:none;
+    z-index:0;
+  }
+  a{color:inherit;text-decoration:none}
+  a.link{
+    color:var(--paper);
+    border-bottom:1px solid var(--line);
+    transition:border-color .25s, color .25s;
+  }
+  a.link:hover{border-color:var(--gilt); color:var(--gilt)}
+  .wrap{
+    position:relative; z-index:2;
+    max-width:var(--max);
+    margin:0 auto;
+    padding-left:var(--gut);
+    padding-right:var(--gut);
+  }
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(140%) blur(10px);
+    -webkit-backdrop-filter:saturate(140%) blur(10px);
+    background:rgba(14,14,12,.72);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:14px;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:.04em;
+  }
+  .brand-mark{
+    width:28px; height:28px;
+    border:1px solid var(--gilt);
+    color:var(--gilt);
+    display:grid; place-items:center;
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:16px;
+    line-height:1;
+  }
+  .brand-name{color:var(--paper)}
+  .brand-name b{font-weight:600}
+  .nav-links{display:flex; gap:28px; align-items:center}
+  .nav-links a{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--gilt)}
+  .nav-cta{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:9px 14px;
+    border:1px solid var(--gilt);
+    color:var(--gilt);
+    transition:background .25s, color .25s;
+  }
+  .nav-cta:hover{background:var(--gilt); color:var(--ink)}
+  @media (max-width:780px){
+    .nav-links{display:none}
+  }
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding-top: clamp(72px, 12vh, 140px);
+    padding-bottom: clamp(80px, 14vh, 180px);
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--mute);
+    display:flex; gap:14px; align-items:center;
+    margin-bottom:36px;
+  }
+  .eyebrow .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--gilt);
+    box-shadow:0 0 14px var(--gilt);
+  }
+  .h-display{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 144, "SOFT" 30, "wght" 400;
+    font-weight:400;
+    line-height:.96;
+    letter-spacing:-0.025em;
+    font-size: clamp(48px, 8.5vw, 132px);
+    margin:0 0 36px;
+    color:var(--paper);
+  }
+  .h-display em{
+    font-style:italic;
+    font-variation-settings:"opsz" 144, "SOFT" 100, "wght" 350;
+    color:var(--gilt);
+  }
+  .h-sub{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 24, "SOFT" 0, "wght" 350;
+    font-size: clamp(20px, 1.9vw, 26px);
+    line-height:1.45;
+    color:var(--paper-dim);
+    max-width: 760px;
+    margin:0 0 48px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:48px 64px;
+    padding-top:32px;
+    border-top:1px solid var(--line-soft);
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.06em;
+    color:var(--mute);
+  }
+  .hero-meta div{max-width:280px}
+  .hero-meta b{
+    display:block;
+    color:var(--paper);
+    font-weight:500;
+    margin-bottom:6px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:10px;
+    color:var(--gilt);
+  }
+  /* ---------- TICKER ---------- */
+  .ticker{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--ink-2);
+    overflow:hidden;
+    position:relative; z-index:2;
+  }
+  .ticker-track{
+    display:flex; gap:0;
+    padding:18px 0;
+    animation:scroll 60s linear infinite;
+    white-space:nowrap;
+  }
+  .ticker-track span{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+    padding:0 36px;
+    border-right:1px solid var(--line);
+    display:inline-block;
+  }
+  .ticker-track .acc{color:var(--gilt)}
+  @keyframes scroll{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(-50%)}
+  }
+  /* ---------- SECTION FRAME ---------- */
+  section.block{
+    padding: clamp(72px, 12vh, 140px) 0;
+    border-bottom:1px solid var(--line-soft);
+    position:relative; z-index:2;
+  }
+  .section-head{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    gap:48px;
+    margin-bottom:72px;
+  }
+  @media (max-width:880px){
+    .section-head{grid-template-columns:1fr; gap:24px; margin-bottom:48px}
+  }
+  .section-num{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--gilt);
+  }
+  .section-num::before{content:"§ "}
+  .section-title{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 96, "SOFT" 0, "wght" 380;
+    font-size: clamp(36px, 5vw, 72px);
+    line-height:1;
+    letter-spacing:-0.02em;
+    margin:8px 0 0;
+    color:var(--paper);
+  }
+  .section-title em{
+    font-style:italic;
+    color:var(--gilt);
+    font-variation-settings:"opsz" 96, "SOFT" 100, "wght" 320;
+  }
+  .section-lede{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 18, "SOFT" 0, "wght" 350;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height:1.55;
+    color:var(--paper-dim);
+    max-width: 64ch;
+  }
+  /* ---------- CAPABILITIES ---------- */
+  .caps{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+  }
+  @media (max-width:780px){ .caps{grid-template-columns:1fr} }
+  .cap{
+    background:var(--ink);
+    padding: clamp(28px, 3.5vw, 44px);
+    position:relative;
+    transition:background .35s;
+  }
+  .cap:hover{background:var(--ink-2)}
+  .cap .idx{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.2em;
+    color:var(--mute);
+    margin-bottom:28px;
+  }
+  .cap h3{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 60, "SOFT" 30, "wght" 400;
+    font-size: clamp(26px, 2.4vw, 36px);
+    line-height:1.05;
+    letter-spacing:-0.015em;
+    margin:0 0 18px;
+    color:var(--paper);
+  }
+  .cap h3 em{
+    font-style:italic;
+    color:var(--gilt);
+    font-variation-settings:"opsz" 60, "SOFT" 100, "wght" 350;
+  }
+  .cap p{
+    font-size:15.5px;
+    line-height:1.6;
+    color:var(--paper-dim);
+    margin:0 0 24px;
+    max-width:48ch;
+  }
+  .cap .stack{
+    display:flex; flex-wrap:wrap; gap:8px;
+    padding-top:18px;
+    border-top:1px dashed var(--line);
+  }
+  .cap .stack span{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--mute);
+    padding:4px 9px;
+    border:1px solid var(--line);
+  }
+  /* ---------- WORK ---------- */
+  .work{
+    border-top:1px solid var(--line);
+  }
+  .work-row{
+    display:grid;
+    grid-template-columns: 80px 1.4fr 2fr 1fr 90px;
+    gap: clamp(16px, 2.4vw, 36px);
+    align-items:start;
+    padding: clamp(28px, 3vw, 40px) 0;
+    border-bottom:1px solid var(--line);
+    transition:background .25s, padding .35s;
+    position:relative;
+  }
+  .work-row:hover{background:linear-gradient(90deg, transparent, rgba(212,165,71,0.04), transparent)}
+  @media (max-width:880px){
+    .work-row{
+      grid-template-columns: 60px 1fr;
+      gap:14px 18px;
+    }
+    .work-row .col-meta{grid-column:1/-1; margin-top:8px}
+    .work-row .col-arrow{display:none}
+  }
+  .col-num{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--mute);
+    letter-spacing:.16em;
+    padding-top:10px;
+  }
+  .col-client{
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:var(--gilt);
+    padding-top:12px;
+  }
+  .col-client small{
+    display:block;
+    color:var(--mute);
+    font-size:10.5px;
+    margin-top:6px;
+    letter-spacing:.12em;
+  }
+  .col-name{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 48, "SOFT" 30, "wght" 400;
+    font-size: clamp(22px, 2.2vw, 32px);
+    line-height:1.15;
+    letter-spacing:-0.015em;
+    color:var(--paper);
+  }
+  .col-name em{
+    font-style:italic;
+    color:var(--gilt);
+    font-variation-settings:"opsz" 48, "SOFT" 100, "wght" 350;
+  }
+  .col-name p{
+    margin:10px 0 0;
+    font-family:var(--sans);
+    font-size:14.5px;
+    line-height:1.55;
+    color:var(--paper-dim);
+    max-width:46ch;
+  }
+  .col-meta{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--mute);
+    line-height:1.7;
+    padding-top:14px;
+  }
+  .col-arrow{
+    text-align:right;
+    padding-top:14px;
+    color:var(--mute);
+    font-family:var(--mono);
+    font-size:18px;
+    transition:color .3s, transform .3s;
+  }
+  .work-row:hover .col-arrow{color:var(--gilt); transform:translateX(4px)}
+  /* ---------- APPROACH ---------- */
+  .approach{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+  }
+  @media (max-width:980px){ .approach{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .approach{grid-template-columns:1fr} }
+  .step{
+    background:var(--ink);
+    padding: clamp(24px, 2.6vw, 36px);
+  }
+  .step .n{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 96, "SOFT" 0, "wght" 320;
+    font-style:italic;
+    font-size:64px;
+    line-height:.9;
+    color:var(--gilt);
+    margin-bottom:28px;
+  }
+  .step h4{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 36, "SOFT" 30, "wght" 450;
+    font-size:22px;
+    line-height:1.15;
+    margin:0 0 12px;
+    color:var(--paper);
+  }
+  .step p{
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--paper-dim);
+    margin:0;
+  }
+  /* ---------- PRINCIPAL ---------- */
+  .principal-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap: clamp(40px, 5vw, 88px);
+    align-items:start;
+  }
+  @media (max-width:880px){ .principal-grid{grid-template-columns:1fr} }
+  .principal-quote{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 60, "SOFT" 30, "wght" 350;
+    font-size: clamp(24px, 2.4vw, 34px);
+    line-height:1.3;
+    color:var(--paper);
+    margin:0 0 36px;
+    letter-spacing:-0.005em;
+  }
+  .principal-quote em{
+    font-style:italic;
+    color:var(--gilt);
+    font-variation-settings:"opsz" 60, "SOFT" 100, "wght" 320;
+  }
+  .principal-bio p{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--paper-dim);
+    margin:0 0 18px;
+  }
+  .principal-bio p:last-child{margin-bottom:0}
+  .creds{
+    margin-top:32px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+  }
+  .cred{
+    background:var(--ink);
+    padding:18px 20px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.06em;
+    line-height:1.6;
+  }
+  .cred b{
+    display:block;
+    color:var(--gilt);
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:10px;
+    margin-bottom:6px;
+  }
+  .cred span{color:var(--paper)}
+  /* ---------- CTA ---------- */
+  .cta{
+    padding: clamp(80px, 14vh, 160px) 0;
+    text-align:left;
+    border-bottom:1px solid var(--line-soft);
+    position:relative; z-index:2;
+  }
+  .cta-display{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 144, "SOFT" 30, "wght" 380;
+    font-size: clamp(44px, 8vw, 124px);
+    line-height:.96;
+    letter-spacing:-0.025em;
+    margin:0 0 48px;
+    color:var(--paper);
+    max-width:14ch;
+  }
+  .cta-display em{
+    font-style:italic;
+    color:var(--gilt);
+    font-variation-settings:"opsz" 144, "SOFT" 100, "wght" 320;
+  }
+  .cta-row{
+    display:flex; gap:18px; flex-wrap:wrap; align-items:center;
+    margin-top:24px;
+  }
+  .btn{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    padding:18px 28px;
+    border:1px solid var(--gilt);
+    color:var(--ink);
+    background:var(--gilt);
+    transition:background .25s, color .25s, transform .25s;
+    display:inline-flex; align-items:center; gap:12px;
+  }
+  .btn:hover{background:transparent; color:var(--gilt); transform:translateY(-1px)}
+  .btn-ghost{
+    background:transparent;
+    color:var(--paper);
+    border-color:var(--line);
+  }
+  .btn-ghost:hover{border-color:var(--paper); color:var(--paper); background:transparent}
+  .btn .arr{font-family:var(--serif); font-style:italic; font-size:16px; line-height:1}
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding: 56px 0 40px;
+    position:relative; z-index:2;
+    background:var(--ink-2);
+    border-top:1px solid var(--line);
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:48px;
+  }
+  @media (max-width:880px){ .foot-grid{grid-template-columns:1fr 1fr; gap:32px} }
+  @media (max-width:520px){ .foot-grid{grid-template-columns:1fr} }
+  .foot-grid h5{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gilt);
+    margin:0 0 14px;
+    font-weight:500;
+  }
+  .foot-grid a, .foot-grid p{
+    display:block;
+    font-size:14px;
+    color:var(--paper-dim);
+    margin:0 0 6px;
+    line-height:1.55;
+    transition:color .2s;
+  }
+  .foot-grid a:hover{color:var(--gilt)}
+  .foot-brand{
+    font-family:var(--serif);
+    font-variation-settings:"opsz" 60, "SOFT" 30, "wght" 400;
+    font-size:32px;
+    line-height:1;
+    color:var(--paper);
+    margin-bottom:14px;
+  }
+  .foot-brand em{font-style:italic; color:var(--gilt)}
+  .foot-tag{
+    font-size:13.5px;
+    color:var(--mute);
+    max-width:38ch;
+    line-height:1.6;
+  }
+  .foot-bot{
+    border-top:1px solid var(--line);
+    padding-top:24px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--mute);
+  }
+  .foot-bot a:hover{color:var(--gilt)}
+  /* ---------- ANIM ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .9s ease, transform .9s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0)}
+  /* ---------- selection ---------- */
+  ::selection{background:var(--gilt); color:var(--ink)}
+</style>
+</head>
+<body>
+<!-- ========== NAV ========== -->
+<header class="nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand" aria-label="BBS LLC home">
+      <span class="brand-mark">B</span>
+      <span class="brand-name"><b>BBS</b>&nbsp;LLC&nbsp;·&nbsp;Bergeland Business Solutions</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#principal">Principal</a>
+    </nav>
+    <a class="nav-cta" href="https://calendly.com/nnbergeland" target="_blank" rel="noopener">Book a call</a>
+  </div>
+</header>
+<!-- ========== HERO ========== -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow reveal">
+      <span class="dot" aria-hidden="true"></span>
+      <span>A Boutique Data Consultancy</span>
+      <span style="color:var(--mute-2)">·</span>
+      <span>Maple Grove, MN</span>
+      <span style="color:var(--mute-2)">·</span>
+      <span>Est. 2023</span>
+    </div>
+    <h1 class="h-display reveal" style="transition-delay:.06s">
+      Turning <em>complexity</em><br>
+      into clarity through<br>
+      <em>data.</em>
+    </h1>
+    <p class="h-sub reveal" style="transition-delay:.14s">
+      BBS LLC builds predictive models, geospatial tooling, and decision systems for retail,
+      logistics, and operationally complex businesses &mdash; the kind of work where the answer
+      lives inside the data, not in a slide deck.
+    </p>
+    <div class="hero-meta reveal" style="transition-delay:.22s">
+      <div>
+        <b>Specialties</b>
+        Location intelligence · Gravity models · Forensic data · Proprietary tooling
+      </div>
+      <div>
+        <b>Engagements</b>
+        Site selection · Network analysis · Data product engineering · Decision systems
+      </div>
+      <div>
+        <b>Stack</b>
+        Python · PostGIS · GeoPandas · Plotly · Flask · SQLAlchemy
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== TICKER ========== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Huff Gravity Models</span>
+    <span class="acc">→</span>
+    <span>Predictive Site Selection</span>
+    <span class="acc">→</span>
+    <span>Carrier Network Overlap</span>
+    <span class="acc">→</span>
+    <span>Forensic Data Analysis</span>
+    <span class="acc">→</span>
+    <span>Catchment Analytics</span>
+    <span class="acc">→</span>
+    <span>Custom Dashboards</span>
+    <span class="acc">→</span>
+    <span>VB6 → Python Modernization</span>
+    <span class="acc">→</span>
+    <!-- duplicate for seamless loop -->
+    <span>Huff Gravity Models</span>
+    <span class="acc">→</span>
+    <span>Predictive Site Selection</span>
+    <span class="acc">→</span>
+    <span>Carrier Network Overlap</span>
+    <span class="acc">→</span>
+    <span>Forensic Data Analysis</span>
+    <span class="acc">→</span>
+    <span>Catchment Analytics</span>
+    <span class="acc">→</span>
+    <span>Custom Dashboards</span>
+    <span class="acc">→</span>
+    <span>VB6 → Python Modernization</span>
+    <span class="acc">→</span>
+  </div>
+</div>
+<!-- ========== CAPABILITIES ========== -->
+<section class="block" id="capabilities">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">01 — Capabilities</div>
+        <h2 class="section-title">What we <em>do</em>.</h2>
+      </div>
+      <p class="section-lede">
+        Four practice areas, each backed by production code we&rsquo;ve shipped.
+        We don&rsquo;t deliver decks &mdash; we deliver tools, models, and pipelines that run.
+      </p>
+    </div>
+    <div class="caps">
+      <div class="cap">
+        <div class="idx">01 / 04</div>
+        <h3>Location <em>intelligence</em></h3>
+        <p>
+          Where should you put the next store? Huff gravity models, custom catchment
+          analysis, drive-time isochrones, and competitor proximity scoring &mdash;
+          all calibrated to your customer data, not generic demographics.
+        </p>
+        <div class="stack">
+          <span>Huff Gravity</span>
+          <span>Census API</span>
+          <span>Google Places</span>
+          <span>Haversine</span>
+          <span>PostGIS</span>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="idx">02 / 04</div>
+        <h3>Geospatial <em>modeling</em></h3>
+        <p>
+          Predictive site-selection systems and network overlap detection.
+          We&rsquo;ve modeled retail catchments across the Twin Cities, Grand Forks,
+          and beyond &mdash; and built carrier GPS overlap tools at supply-chain scale.
+        </p>
+        <div class="stack">
+          <span>GeoPandas</span>
+          <span>Shapely</span>
+          <span>Plotly Dash</span>
+          <span>Flask</span>
+          <span>RentCast API</span>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="idx">03 / 04</div>
+        <h3>Forensic <em>data</em></h3>
+        <p>
+          Reconstructing what happened &mdash; transaction patterns, anomaly detection,
+          and analytical support for accountants, attorneys, and operators
+          who need defensible, reproducible findings.
+        </p>
+        <div class="stack">
+          <span>Pandas</span>
+          <span>SQL</span>
+          <span>Reproducibility</span>
+          <span>Audit Trail</span>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="idx">04 / 04</div>
+        <h3>Data product <em>engineering</em></h3>
+        <p>
+          Modernizing legacy software (yes, including VB6) into maintainable
+          Python services. Flask APIs, PostGIS-backed analytics, parity-tested
+          against legacy systems so you can decommission with confidence.
+        </p>
+        <div class="stack">
+          <span>Flask</span>
+          <span>SQLAlchemy 2.x</span>
+          <span>pytest</span>
+          <span>ruff · black · mypy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== WORK ========== -->
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">02 — Selected Work</div>
+        <h2 class="section-title">Recent <em>engagements</em>.</h2>
+      </div>
+      <p class="section-lede">
+        A small consultancy by design. We take a handful of meaningful engagements
+        per year and ship them well.
+      </p>
+    </div>
+    <div class="work">
+      <article class="work-row">
+        <div class="col-num">001</div>
+        <div class="col-client">
+          Brick Inc.
+          <small>2025 — Active</small>
+        </div>
+        <div class="col-name">
+          Brick &mdash; <em>trybrick.ai</em>
+          <p>
+            Originally a BBS LLC engagement &mdash; the work led Brick Inc. to extend
+            a full-time Sr. Data Engineer offer, with conversion to partner now underway.
+            A multi-network advertising SaaS that launches and manages paid campaigns
+            across Meta, TikTok, Pinterest, and LinkedIn behind a single adapter-pattern
+            API, with Stripe billing and AI-assisted creative generation.
+          </p>
+        </div>
+        <div class="col-meta">
+          React · TypeScript<br>
+          Node · Express<br>
+          PostgreSQL · Neon · Stripe
+        </div>
+        <div class="col-arrow">↗</div>
+      </article>
+      <article class="work-row">
+        <div class="col-num">002</div>
+        <div class="col-client">
+          Dakota Worldwide
+          <small>2026 — Active</small>
+        </div>
+        <div class="col-name">
+          Locus <em>Pro</em>
+          <p>
+            Modernization of a legacy VB6 Huff Gravity Model platform into a
+            Python/Flask service with PostGIS, GeoPandas, and Plotly visualization.
+            Parity-tested against the legacy system.
+          </p>
+        </div>
+        <div class="col-meta">
+          Python · Flask<br>
+          PostGIS · GeoPandas<br>
+          Plotly · pytest
+        </div>
+        <div class="col-arrow">↗</div>
+      </article>
+      <article class="work-row">
+        <div class="col-num">003</div>
+        <div class="col-client">
+          Independent
+          <small>Twin Cities · Grand Forks</small>
+        </div>
+        <div class="col-name">
+          Predictive site <em>selection</em>
+          <p>
+            Location-scoring models for independent barbershops in the Minneapolis–St. Paul
+            metro and a Raising Cane&rsquo;s site analysis in Grand Forks, ND. Combines Census
+            data, points-of-interest, and competitor proximity into rentable-property scoring.
+          </p>
+        </div>
+        <div class="col-meta">
+          Google Places · Census<br>
+          RentCast · Haversine<br>
+          Plotly Dash
+        </div>
+        <div class="col-arrow">↗</div>
+      </article>
+      <article class="work-row">
+        <div class="col-num">004</div>
+        <div class="col-client">
+          Logistics
+          <small>Carrier Network</small>
+        </div>
+        <div class="col-name">
+          Network overlap <em>detector</em>
+          <p>
+            A Flask + Plotly Dash application for identifying overlapping carrier GPS
+            footprints across a national logistics network &mdash; surfacing redundancy,
+            lane gaps, and route consolidation opportunities.
+          </p>
+        </div>
+        <div class="col-meta">
+          Flask · Plotly Dash<br>
+          GeoPandas<br>
+          GPS time-series
+        </div>
+        <div class="col-arrow">↗</div>
+      </article>
+      <article class="work-row">
+        <div class="col-num">005</div>
+        <div class="col-client">
+          Forensic Accounting
+          <small>Engagement Support</small>
+        </div>
+        <div class="col-name">
+          Forensic <em>analytics</em>
+          <p>
+            Analytical support for forensic accounting engagements: transaction
+            reconstruction, anomaly detection, and reproducible reporting workflows
+            built to withstand scrutiny.
+          </p>
+        </div>
+        <div class="col-meta">
+          Pandas · SQL<br>
+          Reproducible notebooks<br>
+          Audit-ready output
+        </div>
+        <div class="col-arrow">↗</div>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ========== APPROACH ========== -->
+<section class="block" id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">03 — How We Work</div>
+        <h2 class="section-title">A small team, <em>shipping</em>.</h2>
+      </div>
+      <p class="section-lede">
+        We avoid the consulting tropes &mdash; no army of juniors, no inflated decks,
+        no boilerplate. Every engagement is led by a principal who writes code.
+      </p>
+    </div>
+    <div class="approach">
+      <div class="step">
+        <div class="n">i</div>
+        <h4>Frame</h4>
+        <p>Tight scoping. We define the decision the work needs to support, the data we&rsquo;ll need, and the bar for &ldquo;done.&rdquo;</p>
+      </div>
+      <div class="step">
+        <div class="n">ii</div>
+        <h4>Build</h4>
+        <p>Production-quality code from day one. Type-checked, tested, version-controlled. No throwaway notebooks masquerading as deliverables.</p>
+      </div>
+      <div class="step">
+        <div class="n">iii</div>
+        <h4>Validate</h4>
+        <p>Parity testing against legacy systems where they exist. Cross-validation against ground truth where it doesn&rsquo;t. Numbers we can defend.</p>
+      </div>
+      <div class="step">
+        <div class="n">iv</div>
+        <h4>Hand off</h4>
+        <p>Documentation written for the engineer who inherits this in three years. Repos, schemas, environment specs &mdash; all of it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== PRINCIPAL ========== -->
+<section class="block" id="principal">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-num">04 — Principal</div>
+        <h2 class="section-title">Nick <em>Bergeland</em>.</h2>
+      </div>
+      <p class="section-lede">
+        BBS LLC is led by a single principal &mdash; the person you talk to is the
+        person doing the work.
+      </p>
+    </div>
+    <div class="principal-grid">
+      <div>
+        <p class="principal-quote">
+          &ldquo;A problem-solver who uses <em>data</em> to turn complexity into clarity.
+          I build predictive models, dashboards, and analytics solutions that drive real
+          business impact &mdash; and try to make the math <em>approachable</em>.&rdquo;
+        </p>
+        <a class="link" href="https://www.linkedin.com/in/nbergeland/" target="_blank" rel="noopener">LinkedIn — /in/nbergeland</a>
+      </div>
+      <div class="principal-bio">
+        <p>
+          Eight-plus years across data science, analytics, and consulting. Prior to BBS,
+          Nick worked as a Logistics Analyst at Target, a Sales Executive at C.H. Robinson,
+          and a Business Architect at GeriCare Solutions &mdash; a path that mixes data
+          rigor with the practical reality of how operations actually run.
+        </p>
+        <p>
+          BBS engagements lean toward the geospatial and the analytically demanding:
+          Huff gravity modeling, network analysis, forensic data work, and modernization
+          of legacy systems. The work is hands-on, end-to-end, and accountable to the people
+          using it.
+        </p>
+        <div class="creds">
+          <div class="cred"><b>Education</b><span>M.S. Data Science<br>Northwestern University</span></div>
+          <div class="cred"><b>Base</b><span>Maple Grove, MN<br>Twin Cities Metro</span></div>
+          <div class="cred"><b>Languages</b><span>Python · SQL<br>TypeScript · R</span></div>
+          <div class="cred"><b>Engagements</b><span>Selective<br>Direct-to-principal</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== CTA ========== -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="section-num reveal">05 — Engage</div>
+    <h2 class="cta-display reveal" style="transition-delay:.05s">
+      Let&rsquo;s build the<br>thing that <em>answers</em><br>your question.
+    </h2>
+    <div class="cta-row reveal" style="transition-delay:.12s">
+      <a class="btn" href="https://calendly.com/nnbergeland" target="_blank" rel="noopener">
+        Book an intro call <span class="arr">→</span>
+      </a>
+      <a class="btn btn-ghost" href="mailto:contact@bbsllc.ai">
+        contact@bbsllc.ai
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">BBS <em>LLC</em></div>
+        <p class="foot-tag">
+          Bergeland Business Solutions. A boutique data consultancy specializing in
+          location intelligence, geospatial modeling, and forensic data work.
+        </p>
+      </div>
+      <div>
+        <h5>Navigate</h5>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#work">Selected Work</a>
+        <a href="#approach">Approach</a>
+        <a href="#principal">Principal</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="mailto:contact@bbsllc.ai">contact@bbsllc.ai</a>
+        <a href="https://calendly.com/nnbergeland" target="_blank" rel="noopener">Book a call</a>
+        <p>Maple Grove, MN<br>55369</p>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="https://www.linkedin.com/in/nbergeland/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/company/bbsllc" target="_blank" rel="noopener">LinkedIn — Company</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 BBS LLC · Bergeland Business Solutions</span>
+      <span>Designed &amp; built in-house · Maple Grove, MN</span>
+    </div>
+  </div>
+</footer>
+<script>
+  // simple intersection-based reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // initial hero reveal
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.hero .reveal, .cta .reveal').forEach(el => el.classList.add('in'));
+  });
+</script>
+</body>
+</html>
