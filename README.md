@@ -31,33 +31,17 @@ The design is intentionally restrained: an editorial typographic system (Fraunce
 
 ![Hero desktop view](screenshots/hero-desktop.png)
 
+### Capabilities (representative section)
+
+The four practice areas, each with a tech-stack pill row, on the same dark editorial system as the rest of the page.
+
+![Capabilities section](screenshots/capabilities-section.png)
+
 ### Hero (mobile, 390 × 844)
 
 <p align="center">
   <img src="screenshots/hero-mobile.png" alt="Hero mobile view" width="320" />
 </p>
-
-### Capabilities
-
-The four practice areas, each with a tech-stack pill row.
-
-![Capabilities section](screenshots/capabilities-section.png)
-
-### Engagement cards (Selected work)
-
-![Engagement cards](screenshots/engagement-cards.png)
-
-### Approach
-
-![Approach section](screenshots/approach.png)
-
-### Principal
-
-![Principal section](screenshots/principal.png)
-
-### Ticker bar (GPU-accelerated marquee)
-
-![Ticker bar](screenshots/ticker-bar.png)
 
 ---
 
@@ -257,11 +241,7 @@ Modern evergreen browsers. The site uses CSS custom properties, `clamp()`, `back
 └── screenshots/     # reference images embedded above
     ├── hero-desktop.png
     ├── hero-mobile.png
-    ├── ticker-bar.png
-    ├── capabilities-section.png
-    ├── engagement-cards.png
-    ├── approach.png
-    └── principal.png
+    └── capabilities-section.png
 ```
 
 | Field           | Value                                                                          |
