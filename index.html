@@ -263,6 +263,10 @@
     0%{transform:translate3d(0,0,0)}
     100%{transform:translate3d(-50%,0,0)}
   }
+  /* mobile: narrower viewport — speed up so content density per second matches desktop feel */
+  @media (max-width:768px){
+    .ticker-track{animation-duration:5s}
+  }
   /* ---------- SECTION FRAME ---------- */
   section.block{
     padding: clamp(72px, 12vh, 140px) 0;
