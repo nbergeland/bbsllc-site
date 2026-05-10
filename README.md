@@ -27,21 +27,36 @@ The design is intentionally restrained: an editorial typographic system (Fraunce
 
 ## Screenshots
 
-### Hero (desktop, 1440 wide)
+### Hero (desktop 1440 wide, mobile 390 × 844)
 
-![Hero desktop view](screenshots/hero-desktop.png)
+The same editorial system rendered side-by-side at the two anchor breakpoints. Display type collapses through `clamp()` rather than via media-query stair-steps, so the warm-dark palette and coordinate-grid background read identically across viewports.
+
+<table>
+  <tr>
+    <td width="70%" valign="top">
+      <img src="screenshots/hero-desktop.png" alt="Hero desktop view at 1440 wide" />
+    </td>
+    <td width="30%" valign="top">
+      <img src="screenshots/hero-mobile.png" alt="Hero mobile view at 390 × 844" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><sub><b>Desktop</b> · 1440 × 900</sub></td>
+    <td align="center"><sub><b>Mobile</b> · 390 × 844</sub></td>
+  </tr>
+</table>
 
 ### Capabilities (representative section)
 
-The four practice areas, each with a tech-stack pill row, on the same dark editorial system as the rest of the page.
+The four practice areas (Location Intelligence, Geospatial Modeling, Forensic Data, Data Product Engineering), each with a tech-stack pill row, on the same dark editorial system as the rest of the page.
 
 ![Capabilities section](screenshots/capabilities-section.png)
 
-### Hero (mobile, 390 × 844)
+### Approach and Selected Work
 
-<p align="center">
-  <img src="screenshots/hero-mobile.png" alt="Hero mobile view" width="320" />
-</p>
+The "A small team, shipping" approach grid (Frame → Build → Validate → Hand off) and the engagement log (Brick Inc., Dakota Worldwide / Locus Pro, independent site selection, Target network overlap, forensic accounting) are best viewed in motion on the live site, since both sections rely on the GPU-promoted ticker and reveal animations that screenshots flatten.
+
+→ [View the Approach section](https://www.bbsllc.ai/#approach) · [View Selected Work](https://www.bbsllc.ai/#work)
 
 ---
 
