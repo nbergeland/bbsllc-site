@@ -16,6 +16,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
 <style>
   :root{
+    /* ---------- LIGHT THEME (default) ----------
+       Warm cream paper, dark espresso text, darker gilt for contrast. */
+    --ink:        #F1E9D4;   /* page background — warm cream */
+    --ink-2:      #E8DFC4;   /* nav / ticker / footer surface */
+    --ink-3:      #DDD3B5;   /* tertiary surface */
+    --line:       #B8AC85;   /* primary borders */
+    --line-soft:  #D2C8A4;   /* subtle dividers */
+    --paper:      #16120E;   /* primary text — dark ink */
+    --paper-dim:  #3A3225;   /* secondary text */
+    --mute:       #6A6353;
+    --mute-2:     #968B74;
+    --gilt:       #9A6E2C;   /* darker gold — passes contrast on cream */
+    --gilt-soft:  #7A5418;
+    --clay:       #9C5535;
+    /* nav background tint (theme-dependent) */
+    --nav-bg:     rgba(241,233,212,.78);
+    /* faint coordinate grid + gradient opacities (tuned per theme) */
+    --grid-line:  rgba(22,18,14,0.045);
+    --glow-gilt-strong: rgba(154,110,44,0.10);
+    --glow-gilt-soft:   rgba(154,110,44,0.05);
+    --glow-clay:        rgba(156,85,53,0.07);
+    --serif: "Fraunces", ui-serif, Georgia, serif;
+    --sans:  "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --max: 1320px;
+    --gut: clamp(20px, 4vw, 56px);
+    --r: 2px;
+  }
+  /* ---------- DARK THEME ----------
+     Espresso ink background with warm cream text and bright gilt accent.
+     Activated via data-theme="dark" on <html>. */
+  :root[data-theme="dark"]{
     --ink:        #16120E;
     --ink-2:      #1E1913;
     --ink-3:      #251F17;
@@ -28,12 +60,20 @@
     --gilt:       #E6BE6E;
     --gilt-soft:  #C99E4F;
     --clay:       #C97A56;
-    --serif: "Fraunces", ui-serif, Georgia, serif;
-    --sans:  "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
-    --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-    --max: 1320px;
-    --gut: clamp(20px, 4vw, 56px);
-    --r: 2px;
+    --nav-bg:     rgba(14,14,12,.72);
+    --grid-line:  rgba(241,233,212,0.028);
+    --glow-gilt-strong: rgba(230,190,110,0.12);
+    --glow-gilt-soft:   rgba(230,190,110,0.06);
+    --glow-clay:        rgba(201,122,86,0.09);
+  }
+  /* Smooth transition on theme switch (skip respected motion prefs below) */
+  html, body, .nav, .ticker, footer, .cap, .step, .cred,
+  .work-row, .btn, .nav-cta, .cap .stack span{
+    transition: background-color .35s ease, color .35s ease, border-color .35s ease;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html, body, .nav, .ticker, footer, .cap, .step, .cred,
+    .work-row, .btn, .nav-cta, .cap .stack span{ transition:none !important; }
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--ink);color:var(--paper)}
@@ -61,8 +101,8 @@
     content:"";
     position:fixed; inset:0;
     background-image:
-      linear-gradient(to right, rgba(241,233,212,0.028) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(241,233,212,0.028) 1px, transparent 1px);
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
     background-size: 80px 80px;
     pointer-events:none;
     z-index:0;
@@ -71,9 +111,9 @@
     content:"";
     position:fixed; inset:0;
     background:
-      radial-gradient(900px 550px at 82% -8%,  rgba(230,190,110,0.12), transparent 62%),
-      radial-gradient(1000px 700px at -8% 28%, rgba(230,190,110,0.06), transparent 62%),
-      radial-gradient(800px 600px at 60% 108%, rgba(201,122,86,0.09),  transparent 62%);
+      radial-gradient(900px 550px at 82% -8%,  var(--glow-gilt-strong), transparent 62%),
+      radial-gradient(1000px 700px at -8% 28%, var(--glow-gilt-soft),   transparent 62%),
+      radial-gradient(800px 600px at 60% 108%, var(--glow-clay),        transparent 62%);
     pointer-events:none;
     z-index:0;
   }
@@ -96,7 +136,7 @@
     position:sticky; top:0; z-index:50;
     backdrop-filter:saturate(140%) blur(10px);
     -webkit-backdrop-filter:saturate(140%) blur(10px);
-    background:rgba(14,14,12,.72);
+    background:var(--nav-bg);
     border-bottom:1px solid var(--line-soft);
   }
   .nav-row{
@@ -152,6 +192,36 @@
     transition:background .25s, color .25s;
   }
   .nav-cta:hover{background:var(--gilt); color:var(--ink)}
+  /* ---------- THEME TOGGLE ---------- */
+  .nav-right{
+    display:flex; align-items:center; gap:14px;
+  }
+  .theme-toggle{
+    width:36px; height:36px;
+    display:inline-flex; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+    color:var(--paper-dim);
+    background:transparent;
+    cursor:pointer;
+    padding:0;
+    transition:border-color .25s, color .25s, background .25s;
+  }
+  .theme-toggle:hover{ border-color:var(--gilt); color:var(--gilt); }
+  .theme-toggle:focus-visible{
+    outline:2px solid var(--gilt);
+    outline-offset:2px;
+  }
+  .theme-toggle svg{ width:16px; height:16px; display:block; }
+  /* default (light theme): show moon (offer to go dark) */
+  .theme-toggle .icon-moon{ display:block; }
+  .theme-toggle .icon-sun{ display:none; }
+  /* dark theme: show sun (offer to go light) */
+  :root[data-theme="dark"] .theme-toggle .icon-moon{ display:none; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun{ display:block; }
+  @media (max-width:480px){
+    .theme-toggle{ width:32px; height:32px; }
+    .theme-toggle svg{ width:14px; height:14px; }
+  }
   @media (max-width:780px){
     .nav-links{display:none}
   }
@@ -239,7 +309,7 @@
   .ticker-track{
     display:flex; gap:0;
     padding:18px 0;
-    animation:scroll 8s linear infinite;
+    animation:scroll 10s linear infinite;
     white-space:nowrap;
     /* GPU-promote so the animation runs on the compositor thread, not the main thread */
     will-change:transform;
@@ -678,6 +748,19 @@
   /* ---------- selection ---------- */
   ::selection{background:var(--gilt); color:var(--ink)}
 </style>
+<script>
+  // Set theme BEFORE first paint to avoid a flash.
+  // Light is the hard default. Only an explicit user choice (stored in
+  // localStorage from a previous toggle click) flips to dark. OS preference
+  // is intentionally NOT consulted — light should always be the first impression.
+  (function(){
+    try {
+      if (localStorage.getItem('bbs-theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme','dark');
+      }
+    } catch (e) { /* ignore — fall through to light default */ }
+  })();
+</script>
 </head>
 <body>
 <!-- ========== NAV ========== -->
@@ -700,7 +783,27 @@
       <a href="#approach">Approach</a>
       <a href="#principal">Principal</a>
     </nav>
-    <a class="nav-cta" href="https://calendly.com/nnbergeland" target="_blank" rel="noopener">Book a call</a>
+    <div class="nav-right">
+      <button
+        type="button"
+        class="theme-toggle"
+        id="themeToggle"
+        aria-label="Switch to dark theme"
+        title="Switch theme"
+        aria-pressed="false"
+      >
+        <!-- Sun icon (shown in dark theme; click to go light) -->
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <!-- Moon icon (shown in light theme; click to go dark) -->
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <a class="nav-cta" href="https://calendly.com/nnbergeland" target="_blank" rel="noopener">Book a call</a>
+    </div>
   </div>
 </header>
 <!-- ========== HERO ========== -->
@@ -744,7 +847,7 @@
 <!-- ========== TICKER ========== -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span>Huff Gravity Models</span>
+    <span>Gravity Models</span>
     <span class="acc">→</span>
     <span>Predictive Site Selection</span>
     <span class="acc">→</span>
@@ -759,7 +862,7 @@
     <span>VB6 → Python Modernization</span>
     <span class="acc">→</span>
     <!-- duplicate for seamless loop -->
-    <span>Huff Gravity Models</span>
+    <span>Gravity Models</span>
     <span class="acc">→</span>
     <span>Predictive Site Selection</span>
     <span class="acc">→</span>
@@ -900,7 +1003,7 @@
         <div class="col-name">
           Locus <em>Pro</em>
           <p>
-            Modernization of a legacy VB6 Huff Gravity Model platform into a
+            Modernization of a legacy VB6 Gravity Model platform into a
             Python/Flask service with PostGIS, GeoPandas, and Plotly visualization.
             Parity-tested against the legacy system.
           </p>
@@ -1115,7 +1218,7 @@
       <div>
         <h5>Elsewhere</h5>
         <a href="https://www.linkedin.com/in/nbergeland/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.linkedin.com/company/bbsllc" target="_blank" rel="noopener">LinkedIn — Company</a>
+        <a href="https://www.linkedin.com/company/bergeland-business-services-bbs-llc/" target="_blank" rel="noopener">LinkedIn — Company</a>
       </div>
     </div>
     <div class="foot-bot">
@@ -1139,6 +1242,40 @@
   requestAnimationFrame(() => {
     document.querySelectorAll('.hero .reveal, .cta .reveal').forEach(el => el.classList.add('in'));
   });
+
+  // ---------- theme toggle ----------
+  (function(){
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+
+    function currentTheme(){
+      return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    }
+    function applyAria(){
+      const isDark = currentTheme() === 'dark';
+      // aria-pressed reflects "has the user activated the non-default (dark) mode?"
+      btn.setAttribute('aria-pressed', String(isDark));
+      btn.setAttribute(
+        'aria-label',
+        isDark ? 'Switch to light theme' : 'Switch to dark theme'
+      );
+    }
+    function setTheme(theme, persist){
+      if (theme === 'dark') root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+      if (persist) {
+        try { localStorage.setItem('bbs-theme', theme); } catch(e) {}
+      }
+      applyAria();
+    }
+    applyAria();
+    btn.addEventListener('click', () => {
+      setTheme(currentTheme() === 'dark' ? 'light' : 'dark', true);
+    });
+    // NOTE: OS prefers-color-scheme is intentionally not followed here.
+    // Light is the hard default; dark requires an explicit click.
+  })();
 </script>
 </body>
 </html>
