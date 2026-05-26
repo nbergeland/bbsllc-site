@@ -1176,7 +1176,10 @@
       <a class="btn" href="https://calendly.com/nnbergeland" target="_blank" rel="noopener">
         Book an intro call <span class="arr">→</span>
       </a>
-      <a class="btn btn-ghost" href="mailto:contact@bbsllc.ai">
+      <a class="btn btn-ghost js-copy-email"
+         href="mailto:contact@bbsllc.ai?subject=Inquiry%20%E2%80%94%20bbsllc.ai"
+         data-copy="contact@bbsllc.ai"
+         data-label="contact@bbsllc.ai">
         contact@bbsllc.ai
       </a>
     </div>
@@ -1211,7 +1214,10 @@
       </div>
       <div>
         <h5>Contact</h5>
-        <a href="mailto:contact@bbsllc.ai">contact@bbsllc.ai</a>
+        <a class="js-copy-email"
+           href="mailto:contact@bbsllc.ai?subject=Inquiry%20%E2%80%94%20bbsllc.ai"
+           data-copy="contact@bbsllc.ai"
+           data-label="contact@bbsllc.ai">contact@bbsllc.ai</a>
         <a href="https://calendly.com/nnbergeland" target="_blank" rel="noopener">Book a call</a>
         <p>Maple Grove, MN<br>55369</p>
       </div>
@@ -1275,6 +1281,39 @@
     });
     // NOTE: OS prefers-color-scheme is intentionally not followed here.
     // Light is the hard default; dark requires an explicit click.
+  })();
+
+  // ---------- contact email: copy-to-clipboard + mailto fallback ----------
+  // Many visitors don't have a default mail handler (Gmail-in-browser users
+  // on macOS especially), so a bare mailto: appears to "do nothing". We copy
+  // the address to clipboard on every click for guaranteed feedback, and let
+  // the native mailto: action fire as well so users WITH a configured client
+  // get the compose window they expect.
+  (function(){
+    const links = document.querySelectorAll('.js-copy-email');
+    if (!links.length) return;
+    links.forEach(a => {
+      a.addEventListener('click', async () => {
+        const addr = a.dataset.copy;
+        const label = a.dataset.label || addr;
+        if (!addr) return;
+        try {
+          await navigator.clipboard.writeText(addr);
+        } catch (_) {
+          // Fallback for older browsers / insecure contexts.
+          const ta = document.createElement('textarea');
+          ta.value = addr; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); } catch(__) {}
+          document.body.removeChild(ta);
+        }
+        // Brief visual confirmation. Restore after ~1.8s.
+        const original = a.textContent;
+        a.textContent = 'Copied — ' + label;
+        clearTimeout(a._copyTimer);
+        a._copyTimer = setTimeout(() => { a.textContent = original; }, 1800);
+      });
+    });
   })();
 </script>
 </body>
